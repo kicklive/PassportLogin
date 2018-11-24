@@ -3,6 +3,8 @@ var stylus = require('stylus');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var session = require("express-session");
+var routes = require('../routes/index');
+var passport = require('passport');
 
 module.exports = function(app, config) {
     function compile(str, path) {
@@ -18,12 +20,14 @@ module.exports = function(app, config) {
     app.use(logger('dev'));
     app.use(
         session({
-            secret: "multi vision unicorns",
+            secret: "st2018",
             resave: false,
             saveUninitialized: false
         })
     );
-
+	app.use(passport.initialize());
+	app.use(passport.session());
+	
     //for stylus . Config stylus middleware
     app.use(stylus.middleware({
         src: config.rootPath + '/public',
@@ -33,6 +37,7 @@ module.exports = function(app, config) {
 
     //this tells express that anytime a request come into the public directory that 
     //matches to a file in the public directory, go ahead and server up that file
-    app.use(express.static(config.rootPath + '/public'));
+	app.use(express.static(config.rootPath + '/public'));
+	app.use('/', routes);
 
 };

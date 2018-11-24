@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -15,7 +15,7 @@
         };
 
         return service;
- 
+
         function loginUser(formData) {
             return $http.get('/data/login', formData).then(success, failure);
 
@@ -26,8 +26,11 @@
 
             function failure(err) {
                 //debugger;
-                return function() {
-                    return { success: false, message: err };
+                return function () {
+                    return {
+                        success: false,
+                        message: err
+                    };
                 };
             }
         }
@@ -43,8 +46,11 @@
 
             function failure(err) {
                 //debugger;
-                return function() {
-                    return { success: false, message: err };
+                return function () {
+                    return {
+                        success: false,
+                        message: err
+                    };
                 };
             }
         }
@@ -59,8 +65,11 @@
 
             function failure(err) {
                 //debugger;
-                return function() {
-                    return { success: false, message: err };
+                return function () {
+                    return {
+                        success: false,
+                        message: err
+                    };
                 };
             }
         }

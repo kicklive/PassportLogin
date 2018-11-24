@@ -87,7 +87,7 @@
                 controllerAs: 'iec'
             })
             .state('startpage', {
-                url: '/',
+                url: '/go',
                 params: { d: null, s: null },
                 resolve: {
                     access: function(storageservice) {
